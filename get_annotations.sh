@@ -19,9 +19,9 @@ wget https://storage.googleapis.com/public_stuff/IMDb-Face.csv
 
 DATA_ROOT_FOLDER=$1
 echo "Creating layout folder in $DATA_ROOT_FOLDER"
-rm -rf "$DATA_ROOT_FOLDER/data/"
-rm -rf "$DATA_ROOT_FOLDER/data/"
-
+rm -r "$DATA_ROOT_FOLDER/data/person/"
+rm -r "$DATA_ROOT_FOLDER/data/notperson"
+rm -r "$DATA_ROOT_FOLDER/data"
 mkdir "$DATA_ROOT_FOLDER/data"
 mkdir "$DATA_ROOT_FOLDER/data/person"
 mkdir "$DATA_ROOT_FOLDER/data/notperson"
