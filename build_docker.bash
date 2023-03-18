@@ -1,0 +1,1 @@
+docker build -t tf_gpu . --progress=plain  --no-cache

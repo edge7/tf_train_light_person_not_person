@@ -16,7 +16,7 @@ def real_time():
         if 'dropout' in layer.name:
             layer.rate = 0
 
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(4)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 640)
     while cap.isOpened():
@@ -27,13 +27,12 @@ def real_time():
                 # If loading a video, use 'break' instead of 'continue'.
                 continue
             gray_scale =  cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-            gray_scale_resized = cv2.resize(gray_scale, (128, 128)) / 255.0
+            gray_scale_resized = cv2.resize(gray_scale, (256, 256)) / 255.0
             prediction = model_fitted.predict(np.expand_dims(gray_scale_resized, 0))[0][0]
             if prediction > 0.5:
                 print("Person identified ", round(prediction, 3))
             else:
                 print("No person identified", round(prediction, 3))
-            time.sleep(2)
             # cv2.imshow('Frame recorded', raw)
             if cv2.waitKey(5) & 0xFF == 27:
                 break
@@ -43,3 +42,4 @@ def real_time():
     cap.release()
 
 real_time()
+#%%
